@@ -14,8 +14,8 @@ app.config['JSON_AS_ASCII'] = False
 def SendTable():
 
     Selenium_PDF.Selenium_pdf()
-    dfs = ChengePDF.ReadPdf()
-    List_Time = ChengePDF.ListDfs(dfs)
+    dfs = ChangePDF.ReadPdf()
+    List_Time = ChangePDF.ListDfs(dfs)
     bus_list = pd.concat([List_Time[0], List_Time[1]], axis=1)
 
     json_data = bus_list.to_json()
