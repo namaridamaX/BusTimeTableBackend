@@ -22,5 +22,9 @@ def SendTable():
 
     return json_data
 
+@app.route('/hello')
+def hello():
+    return 'hello'
+
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
