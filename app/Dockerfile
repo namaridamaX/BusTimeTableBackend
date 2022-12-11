@@ -8,6 +8,7 @@ RUN pip install selenium, chromedriver-binary==84.0.4147.30
 RUN yum -y install java-1.8.0-openjdk
 RUN pip install tabula-py
 RUN pip install flask_cors
+RUN pip install PyPDF2
 
 WORKDIR /workdir
 EXPOSE 5000

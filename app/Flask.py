@@ -13,7 +13,11 @@ app.config['JSON_AS_ASCII'] = False
 @app.route('/', methods=["GET"])
 def SendTable():
 
-    Selenium_PDF.Selenium_pdf()
+    #バスPDFが期間外の場合のみseleniumを用いてPDFを更新
+    if(ChangePDF.SerchPdf()):
+        print("true")
+        Selenium_PDF.Selenium_pdf() #seleniumを用いてPDFfileを読み取る <- 毎回行うと時間がかかる？
+
     dfs = ChangePDF.ReadPdf()
     List_Time = ChangePDF.ListDfs(dfs)
     bus_list = pd.concat([List_Time[0], List_Time[1]], axis=1)
