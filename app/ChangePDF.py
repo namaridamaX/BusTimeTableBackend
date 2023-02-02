@@ -1,4 +1,5 @@
 import datetime
+import os.path
 
 import pytz
 import tabula
@@ -22,12 +23,15 @@ def SerchPdf():
     FullWidthDigits = "０１２３４５６７８９"
     HalfWidthDigits = "0123456789"
     conv_map = str.maketrans(FullWidthDigits,HalfWidthDigits)
-    dt_now = datetime.now(pytz.timezone('Asia/Tokyo')) #現在の時間
+    # dt_now = datetime.now(pytz.timezone('Asia/Tokyo')) #現在の時間
+
+
+    if (os.path.getsize("PDF") == 0): return True
 
     with open("PDF/bus.pdf","rb") as f:
         reader = PyPDF2.PdfReader(f)
-        page = reader.getPage(0)
-        pdf_text = page.extractText()
+        page = reader.pages[0] #PyPDF2がversion3.0に変更によりこっちを使うようになりました
+        pdf_text = page.extract_text() #PyPDF2がversion3.0に変更によりこっちを使うようになりました
 
         # 運行期間が書かれている日付を抽出
         target = '～'

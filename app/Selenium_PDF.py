@@ -25,10 +25,10 @@ def Selenium_pdf():
     # file_url = driver.find_element(By.XPATH, "//*[@id='paragraph_107_1615971519']/div/div/div[1]/a").get_attribute("href")
     # urllib.request.urlretrieve(file_url, "PDF/bus.pdf")
 
-    shutil.rmtree('PDF')
+    # shutil.rmtree('PDF')
     os.mkdir('PDF')
     options = webdriver.ChromeOptions()
-    driver = webdriver.Remote(command_executor='172.18.0.3:4444/wd/hub', options=options)
+    driver = webdriver.Remote(command_executor='172.18.0.2:4444/wd/hub', options=options)
     driver.get('https://www.chitose.ac.jp/info/access')
     time.sleep(1)
     file_url = driver.find_element(By.XPATH, "//*[@id='paragraph_107_1615971519']/div/div/div[1]/a").get_attribute("href")
